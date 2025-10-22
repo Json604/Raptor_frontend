@@ -52,7 +52,7 @@ a{
 
 .left-beam {
   left: -60px;             
-  transform: rotate(-25deg) scaleY(1.2);
+  transform: rotate(-25deg) scaleY(2.2);
 }
 
 .right-beam {

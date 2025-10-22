@@ -10,9 +10,9 @@ function BgBeam() {
         animate={{ x: 0, y: 0, opacity: 0.8, rotate: -25 }}
         transition={{
             type: "spring",
-            stiffness: 60,
+            stiffness: 40,
             damping: 18,
-            duration: 3
+            duration: 1
         }}
         />
         <motion.div
@@ -21,9 +21,9 @@ function BgBeam() {
         animate={{ x: 0, y: 0, opacity: 0.8, rotate: 25 }}
         transition={{
             type: "spring",
-            stiffness: 60,
+            stiffness: 40,
             damping: 18,
-            duration: 3
+            duration: 1
         }}
         />
         </>
