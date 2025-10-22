@@ -1,0 +1,61 @@
+.navbar {
+    position: fixed;
+    top: 2rem;
+    left: 6rem;
+    right: 6rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(30,30,30, 0.75);
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(1rem);
+    z-index: 2;
+}
+
+.brand{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
+}
+.sections{
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.signin{
+    background-color: rgba(40,40,40, 0.88);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.beam {
+  position: fixed;         
+  top: -18vh;              
+  width: 160px;            
+  height: 90vh;            
+  z-index: 0;              
+  pointer-events: none;    
+  opacity: 0.8;            
+  filter: blur(48px);      
+  border-radius: 80px;     
+  background: linear-gradient(100deg, #FF6600 80%, transparent); 
+}
+
+.left-beam {
+  left: -60px;             
+  transform: rotate(-25deg) scaleY(1.2);
+}
+
+.right-beam {
+  right: -60px;
+  transform: rotate(25deg) scaleY(1.2);
+}

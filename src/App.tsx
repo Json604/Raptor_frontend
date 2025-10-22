@@ -1,34 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+    <div id='home' className='container1'>
+      <div className='box1'>
+        <p className='heading'>Instant Security Scans for Modern Apps</p>
+        <div className='subheading'>
+          <p>Scan your GitHub repo or live site for secrets, vulnerabilities, and risks in seconds.</p>
+          <p style={{fontSize: "1.3rem", marginTop: "-0.8rem"}}>no login required.</p>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className='box2'>
+        <a href='#tools' className='scanBtn'>Start Free Scan</a>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </div>
+
+    <div id='tools' className='container2'>
+      <div className='contentBox'>
+        <p className='contentBoxHeading'>Paste your public GitHub repository or deployed app link to get your security report.</p>
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <input className='gitORsite' placeholder='Enter github repo link or live app URL' />
+        </div>
+        
+        <p style={{color: '#959595', textAlign:'center',marginTop: '2.6rem', fontSize:'1.5rem'}}>OR</p>
+
+        <div className='gitANDsite'>
+          <input placeholder='Enter github repo link' />
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#959595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          <input placeholder='Enter live app URL' />
+        </div>
+        <div className='btns'>
+          <div className='quickScan'>Quick scan</div>
+          <div className='fullScan'>Full Deep scan</div>
+        </div>
+      </div>
+    </div>
+
+    <div id='why' className='container3'>
+
+    </div>
+
     </>
+
   )
 }
 
