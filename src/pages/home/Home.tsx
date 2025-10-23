@@ -8,6 +8,7 @@ import BgBeam from '../../components/BgBeam'
 function Home() {
   const [githubUrl, setGithub] = useState("")
   const [webUrl, setURL] = useState("")
+  setGithub('xyz')
 
   return (
     <>
