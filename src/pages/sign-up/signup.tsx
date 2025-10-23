@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
 import './signup.css'
+import BgBeam from '../../components/BgBeam'
 
 function SignUp() {
   const [isSignIn, setIsSignIn] = useState(false)
@@ -36,6 +37,7 @@ function SignUp() {
 
   return (
     <>
+    <BgBeam/>
     <div className='signup-page'>
       <div className='signup-container'>
         <div className='signup-header'>

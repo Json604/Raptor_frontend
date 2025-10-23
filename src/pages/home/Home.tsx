@@ -2,12 +2,17 @@ import './Home.css'
 import { X, Clock, BookOpen, Zap, Bot, Wrench, Users } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import BgBeam from '../../components/BgBeam'
 
 function Home() {
+  const [githubUrl, setGithub] = useState("")
+  const [webUrl, setURL] = useState("")
 
   return (
     <>
     <Navbar />
+    <BgBeam />
     <div id='home' className='container1'>
       <div className='box1'>
         <p className='heading'>Instant Security Scans for Modern Apps</p>
@@ -24,19 +29,19 @@ function Home() {
     <div id='tools' className='container2'>
       <div className='contentBox'>
         <p className='contentBoxHeading'>Paste your public GitHub repository or deployed app link to get your security report.</p>
-        <div style={{display:'flex', justifyContent:'center'}}>
+        {/* <div style={{display:'flex', justifyContent:'center'}}>
           <input className='gitORsite' placeholder='Enter github repo link or live app URL' />
         </div>
-        
-        <p style={{color: '#959595', textAlign:'center',marginTop: '2.6rem', fontSize:'1.5rem'}}>OR</p>
+         */}
+        {/* <p style={{color: '#959595', textAlign:'center',marginTop: '2.6rem', fontSize:'1.5rem'}}>OR</p> */}
 
         <div className='gitANDsite'>
-          <input placeholder='Enter github repo link' />
+          <input value={githubUrl} onChange={(e) => (setGithub(e.target.value))} placeholder='Enter github repo link' />
           <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#959595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-          <input placeholder='Enter live app URL' />
+          <input value={webUrl} onChange={(e) => setURL(e.target.value)} placeholder='Enter live app URL' />
         </div>
         <div className='btns'>
-          <Link to='/results'><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
+          <Link to='/results' state={{githubUrl, webUrl}}><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
           {/* <Link to='/results'> */}
           <div className='fullScan' style={{color:'black'}}>
             Deep scan
