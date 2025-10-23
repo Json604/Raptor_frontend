@@ -1,11 +1,12 @@
-import './App.css'
+import './Home.css'
 import { X, Clock, BookOpen, Zap, Bot, Wrench, Users } from 'lucide-react'
+import Navbar from '../../components/Navbar'
 
-function App() {
+function Home() {
 
   return (
     <>
-
+    <Navbar />
     <div id='home' className='container1'>
       <div className='box1'>
         <p className='heading'>Instant Security Scans for Modern Apps</p>
@@ -139,7 +140,7 @@ function App() {
       </div>
     </div>
 
-    <footer className='footer'>
+    <footer id='contact' className='footer'>
       <div className='footer-content'>
         <div className='footer-brand'>
           <h3>Raptor</h3>
@@ -191,4 +192,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
