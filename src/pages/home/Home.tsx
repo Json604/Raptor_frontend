@@ -1,6 +1,7 @@
 import './Home.css'
 import { X, Clock, BookOpen, Zap, Bot, Wrench, Users } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
@@ -35,11 +36,13 @@ function Home() {
           <input placeholder='Enter live app URL' />
         </div>
         <div className='btns'>
-          <div className='quickScan'>Quick scan</div>
-          <div className='fullScan'>
+          <Link to='/results'><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
+          {/* <Link to='/results'> */}
+          <div className='fullScan' style={{color:'black'}}>
             Deep scan
             <span className='coming-soon-banner'>Coming Soon</span>
           </div>
+          {/* </Link> */}
         </div>
       </div>
     </div>
