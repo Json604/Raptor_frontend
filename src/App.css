@@ -23,9 +23,15 @@
     letter-spacing: 0.04rem;
     font-weight: 300;
 }
+.subHighlight{
+    font-size: 1.3rem;
+    margin-top: -0.8rem;
+}
 .scanBtn{
     background-color: white;
     padding: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     border-radius: 2rem;
     font-size: 1.7rem;
     font-weight: 300;
@@ -67,7 +73,6 @@ input{
     background: rgba(40,40,40, 0.88);
     color: #fff;
     border: 1.5px solid rgba(255,255,255,0.08);
-    margin:  0 4rem 0 4rem;
     margin-top: 2rem;
 }
 
@@ -79,6 +84,8 @@ input{
     padding: 1rem;
     margin:  0 4rem 0 4rem;
     margin-top: 2rem;
+    /* background-color:#282828; */
+    /* border-radius: 1rem; */
 }
 .gitANDsite input{
     width: 40%;
@@ -97,9 +104,8 @@ input:focus {
 .btns{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 19rem 0 22rem;
+    justify-content: center;
+    gap: 8rem;
     font-size: 1.5rem;
     border-radius: 2rem;
     font-weight: 300;
@@ -119,4 +125,22 @@ input:focus {
     padding-left: 2rem;
     padding-right: 2rem;
     border-radius: 2rem;
+}
+
+
+/* OTHER DEVICES */
+@media(max-width: 992px){
+    .container1{min-height: 65vh;}
+    .heading{font-size: 3rem;margin-left: 2rem;margin-right: 2rem;}
+    .subheading{font-size: 0.8rem; margin:0 1.5rem 0 1.5rem}
+    .subHighlight{font-size: 1rem;}
+    .box2{margin-top: 5rem;}
+    .scanBtn{font-size: 1.3rem;}
+    .contentBox{margin: 1.2rem;}
+    .contentBoxHeading{font-size: 0.8rem; margin: 1.8rem;}
+    .gitANDsite{flex-direction: column; gap: 1rem; margin-left: 3rem;margin-right: 3rem;}
+    .gitANDsite input{width: 100%;}
+    .btns{font-size: 1rem; gap: 3rem;margin-top: 4rem;}
+    .quickScan{padding-left: 1rem;padding-right: 1rem;}
+    .fullScan{padding-left: 1rem;padding-right: 1rem;}
 }

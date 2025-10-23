@@ -10,7 +10,7 @@ function App() {
         <p className='heading'>Instant Security Scans for Modern Apps</p>
         <div className='subheading'>
           <p>Scan your GitHub repo or live site for secrets, vulnerabilities, and risks in seconds.</p>
-          <p style={{fontSize: "1.3rem", marginTop: "-0.8rem"}}>no login required.</p>
+          <p className='subHighlight'>no login required.</p>
         </div>
       </div>
       <div className='box2'>
@@ -34,7 +34,7 @@ function App() {
         </div>
         <div className='btns'>
           <div className='quickScan'>Quick scan</div>
-          <div className='fullScan'>Full Deep scan</div>
+          <div className='fullScan'>Deep scan</div>
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ a{
 .beam {
   position: fixed;         
   top: -18vh;              
-  width: 160px;            
+  width: 10rem;            
   height: 90vh;            
   z-index: 0;              
   pointer-events: none;    
@@ -58,4 +58,10 @@ a{
 .right-beam {
   right: -60px;
   transform: rotate(25deg) scaleY(1.2);
+}
+
+@media (max-width: 768px) {
+  .beam{top: -30vh;}
+  .left-beam{left: -10rem;}
+  .right-beam{right: -10rem;}
 }
