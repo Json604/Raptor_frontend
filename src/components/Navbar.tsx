@@ -25,7 +25,7 @@ function Navbar() {
             </div>
             
             {/* Desktop Sign-in */}
-            <Link to='/signup'><div className='signin desktop-signin'>Sign-up</div></Link>            
+            {/* <Link to='/signup'><div className='signin desktop-signin'>Sign-up</div></Link>             */}
             
             {/* Mobile Hamburger Menu */}
             <div className='hamburger' onClick={toggleMenu}>
@@ -40,9 +40,9 @@ function Navbar() {
                     <a href='/#why' onClick={() => setIsMenuOpen(false)}>Why</a>
                     <a href='/#tools' onClick={() => setIsMenuOpen(false)}>Tools</a>
                     <a href='/#contact' onClick={() => setIsMenuOpen(false)}>Contact</a>
-                    <Link to='/signup'>
-                    <div className='mobile-signin'>Sign-up</div>
-                    </Link>
+                    {/* <Link to='/signup'> */}
+                    {/* <div className='mobile-signin'>Sign-up</div> */}
+                    {/* </Link> */}
                 </div>
             )}
         </div>

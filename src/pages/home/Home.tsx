@@ -17,7 +17,8 @@ function Home() {
       <div className='box1'>
         <p className='heading'>Instant Security Scans for Modern Apps</p>
         <div className='subheading'>
-          <p>Scan your GitHub repo or live site for secrets, vulnerabilities, and risks in seconds.</p>
+          {/* GitHub repo or */}
+          <p>Scan your live site for secrets, vulnerabilities, and risks in seconds.</p>
           <p className='subHighlight'>no login required.</p>
         </div>
       </div>
@@ -28,7 +29,8 @@ function Home() {
 
     <div id='tools' className='container2'>
       <div className='contentBox'>
-        <p className='contentBoxHeading'>Paste your public GitHub repository or deployed app link to get your security report.</p>
+        {/* public GitHub repository or  */}
+        <p className='contentBoxHeading'>Paste your deployed app link to get your security report.</p>
         {/* <div style={{display:'flex', justifyContent:'center'}}>
           <input className='gitORsite' placeholder='Enter github repo link or live app URL' />
         </div>
@@ -36,8 +38,8 @@ function Home() {
         {/* <p style={{color: '#959595', textAlign:'center',marginTop: '2.6rem', fontSize:'1.5rem'}}>OR</p> */}
 
         <div className='gitANDsite'>
-          <input value={githubUrl} onChange={(e) => (setGithub(e.target.value))} placeholder='Enter github repo link' />
-          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#959595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          {/* <input value={githubUrl} onChange={(e) => (setGithub(e.target.value))} placeholder='Enter github repo link' /> */}
+          {/* <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#959595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg> */}
           <input value={webUrl} onChange={(e) => setURL(e.target.value)} placeholder='Enter live app URL' />
         </div>
         <div className='btns'>
