@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './Results.css';
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-import { Download, AlertTriangle, Shield, Info, CheckCircle } from 'lucide-react';
+import { Download, AlertTriangle, Shield, Info } from 'lucide-react';
 
 export default function Results() {
     const [data, setData] = useState<any>(null);
