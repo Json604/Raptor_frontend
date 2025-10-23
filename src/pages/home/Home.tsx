@@ -6,8 +6,33 @@ import { useState } from 'react'
 import BgBeam from '../../components/BgBeam'
 
 function Home() {
-  const [githubUrl, setGithub] = useState("")
+  // const [githubUrl, setGithub] = useState("")
   const [webUrl, setURL] = useState("")
+  const [urlError, setUrlError] = useState("")
+
+  const validateUrl = (url: string) => {
+    try {
+      new URL(url)
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  const handleWebUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setURL(value)
+    
+    if (value && !validateUrl(value)) {
+      setUrlError("Please enter a valid URL (e.g., https://example.com)")
+    } else {
+      setUrlError("")
+    }
+  }
+
+  const canScan = () => {
+    return webUrl && validateUrl(webUrl) && !urlError
+  }
 
   return (
     <>
@@ -40,10 +65,24 @@ function Home() {
         <div className='gitANDsite'>
           {/* <input value={githubUrl} onChange={(e) => (setGithub(e.target.value))} placeholder='Enter github repo link' /> */}
           {/* <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#959595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg> */}
-          <input value={webUrl} onChange={(e) => setURL(e.target.value)} placeholder='Enter live app URL' />
+          <input 
+            value={webUrl} 
+            onChange={handleWebUrlChange} 
+            placeholder='Enter live app URL' 
+            style={{ borderColor: urlError ? '#ff4444' : '' }}
+          />
         </div>
+        {urlError && (
+          <div style={{ color: '#ff4444', fontSize: '0.9rem', marginTop: '0.5rem', textAlign: 'center' }}>
+            {urlError}
+          </div>
+        )}
         <div className='btns'>
-          <Link to='/results' state={{ webUrl}}><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
+          {canScan() ? (
+            <Link to='/results' state={{ webUrl}}><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
+          ) : (
+            <div className='quickScan' style={{color:'#666', cursor: 'not-allowed', opacity: 0.6}}>Quick scan</div>
+          )}
           {/* <Link to='/results'> */}
           <div className='fullScan' style={{color:'black'}}>
             Deep scan

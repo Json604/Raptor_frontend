@@ -7,6 +7,8 @@ import { Download, AlertTriangle, Shield, Info } from 'lucide-react';
 export default function Results() {
     const [data, setData] = useState<any>(null);
     const [activeTab, setActiveTab] = useState<'vibe' | 'indepth'>('vibe');
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation()
     const {githubUrl, webUrl} = location.state || {}
     const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -288,33 +290,72 @@ export default function Results() {
 
     useEffect(() => {
         const quickScanData = async () => {
-            let endpoint = ""
-            let body = {}
+            try {
+                setIsLoading(true);
+                setError(null);
+                
+                let endpoint = ""
+                let body = {}
 
-            if(githubUrl && !webUrl){
-                endpoint = `${BASE_URL}/quick/github`
-                body = {url: githubUrl}
-            }
-            else if (!githubUrl && webUrl) {
-                endpoint = `${BASE_URL}/quick/web`;
-                body = {url: webUrl};
-            } else if (githubUrl && webUrl) {
-                endpoint = `${BASE_URL}/quick/full`;
-                body = { githubUrl, webUrl};
-            } else {
-                console.error("No input provided");
-                return;
-            }
+                if(githubUrl && !webUrl){
+                    endpoint = `${BASE_URL}/quick/github`
+                    body = {url: githubUrl}
+                }
+                else if (!githubUrl && webUrl) {
+                    endpoint = `${BASE_URL}/quick/web`;
+                    body = {url: webUrl};
+                } else if (githubUrl && webUrl) {
+                    endpoint = `${BASE_URL}/quick/full`;
+                    body = { githubUrl, webUrl};
+                } else {
+                    setError("No input provided. Please go back and enter a valid URL.");
+                    return;
+                }
 
-            const res = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json",
-                },
-                body:JSON.stringify(body)
-            });
-            const json = await res.json();
-            setData(json);
+                const res = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body:JSON.stringify(body)
+                });
+
+                if (!res.ok) {
+                    // Try to get the error message from the response
+                    let errorMessage = `HTTP error! status: ${res.status}`;
+                    try {
+                        const errorJson = await res.json();
+                        if (errorJson.error) {
+                            errorMessage = errorJson.error;
+                        } else if (errorJson.message) {
+                            errorMessage = errorJson.message;
+                        }
+                    } catch (parseError) {
+                        // If we can't parse the response, use the generic error
+                        console.error("Could not parse error response:", parseError);
+                    }
+                    setError(errorMessage);
+                    return;
+                }
+
+                const json = await res.json();
+                
+                if (json.success === false) {
+                    setError(json.error || json.message || "Scan failed. Please try again.");
+                    return;
+                }
+                
+                setData(json);
+            } catch (err) {
+                console.error("Scan error:", err);
+                if (err instanceof TypeError && err.message.includes('fetch')) {
+                    setError("Network error: Unable to connect to the server. Please check your internet connection and try again.");
+                } else {
+                    setError(err instanceof Error ? err.message : "An unexpected error occurred. Please try again.");
+                }
+            } finally {
+                setIsLoading(false);
+            }
         };
 
         quickScanData();
@@ -366,7 +407,51 @@ export default function Results() {
         });
     };
 
-    if (!data) {
+    if (error) {
+        return (
+            <>
+                <Navbar />
+                <div className="results-container">
+                    <div className="error-message">
+                        <h2>Scan Failed</h2>
+                        <p>{error}</p>
+                        <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                            <button 
+                                onClick={() => window.location.reload()} 
+                                style={{
+                                    background: '#00d4ff',
+                                    color: 'black',
+                                    border: 'none',
+                                    padding: '0.75rem 1.5rem',
+                                    borderRadius: '8px',
+                                    cursor: 'pointer',
+                                    fontWeight: '500'
+                                }}
+                            >
+                                Try Again
+                            </button>
+                            <button 
+                                onClick={() => window.history.back()} 
+                                style={{
+                                    background: 'transparent',
+                                    color: '#00d4ff',
+                                    border: '1px solid #00d4ff',
+                                    padding: '0.75rem 1.5rem',
+                                    borderRadius: '8px',
+                                    cursor: 'pointer',
+                                    fontWeight: '500'
+                                }}
+                            >
+                                Go Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+    if (isLoading || !data) {
         return (
             <>
                 <Navbar />
