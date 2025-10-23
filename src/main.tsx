@@ -8,7 +8,7 @@ import BgBeam from './components/BgBeam.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BgBeam />
-    {/* <Navbar /> */}
+    <Navbar />
     <App />
   </StrictMode>,
 )
