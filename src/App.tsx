@@ -35,7 +35,10 @@ function App() {
         </div>
         <div className='btns'>
           <div className='quickScan'>Quick scan</div>
-          <div className='fullScan'>Deep scan</div>
+          <div className='fullScan'>
+            Deep scan
+            <span className='coming-soon-banner'>Coming Soon</span>
+          </div>
         </div>
       </div>
     </div>
@@ -153,9 +156,27 @@ function App() {
           
           <div className='footer-section'>
             <h4>Contact</h4>
-            <a href='mailto:kartikey060105@gmail.com' target="_blank">Mail</a>
-            <a href='https://x.com/infin8erer' target="_blank">Twitter</a>
-            <a href='https://www.linkedin.com/in/kartikey10121' target="_blank">Linkedin</a>
+            <a href='mailto:kartikey060105@gmail.com' target="_blank" className='contact-link'>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Mail
+            </a>
+            <a href='https://x.com/infin8erer' target="_blank" className='contact-link'>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              Twitter
+            </a>
+            <a href='https://www.linkedin.com/in/kartikey10121' target="_blank" className='contact-link'>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>

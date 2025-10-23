@@ -11,7 +11,7 @@
     align-items: center;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 5rem;
     backdrop-filter: blur(1rem);
     z-index: 2;
 }
@@ -30,11 +30,59 @@
 a{
     text-decoration: none;
     color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+a:hover {
+    color: #FF6600;
+    transform: translateY(-2px);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: #FF6600;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+a:hover::after {
+    width: 100%;
 }
 .signin{
     background-color: rgba(40,40,40, 0.88);
     padding: 1rem;
     border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.signin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 102, 0, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.signin:hover {
+    background-color: rgba(255, 102, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.2);
+}
+
+.signin:hover::before {
+    left: 100%;
 }
 
 .beam {
