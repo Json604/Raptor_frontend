@@ -6,9 +6,8 @@ import { useState } from 'react'
 import BgBeam from '../../components/BgBeam'
 
 function Home() {
-  const [githubUrl, setGithub] = useState("")
+  // const [githubUrl, setGithub] = useState("")
   const [webUrl, setURL] = useState("")
-  setGithub('xyz')
 
   return (
     <>
@@ -44,7 +43,8 @@ function Home() {
           <input value={webUrl} onChange={(e) => setURL(e.target.value)} placeholder='Enter live app URL' />
         </div>
         <div className='btns'>
-          <Link to='/results' state={{githubUrl, webUrl}}><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
+          {/* state={{githubUrl, webUrl}} */}
+          <Link to='/results' ><div className='quickScan' style={{color:'black'}}>Quick scan</div></Link>
           {/* <Link to='/results'> */}
           <div className='fullScan' style={{color:'black'}}>
             Deep scan
