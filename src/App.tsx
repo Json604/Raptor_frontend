@@ -1,4 +1,5 @@
 import './App.css'
+import { X, Clock, BookOpen, Zap, Bot, Wrench, Users } from 'lucide-react'
 
 function App() {
 
@@ -40,8 +41,129 @@ function App() {
     </div>
 
     <div id='why' className='container3'>
+      <div className='why-content'>
+        <div className='why-header'>
+          <h2>Why Raptor?</h2>
+          <p className='why-subtitle'>Security for creators, learners, and builders—at the speed and simplicity you deserve.</p>
+        </div>
 
+        <div className='why-problem'>
+          <h3>The Problem</h3>
+          <p>App-building is easier than ever—thanks to AI, no-code, and low-code platforms. But "easy to build" can mean "easy to break."</p>
+          <div className='stats'>
+            <div className='stat-item'>
+              <span className='stat-number'>50-70%</span>
+              <span className='stat-text'>of new apps are built by non-tech users</span>
+            </div>
+          </div>
+          <p className='problem-detail'>Most don't realize how quickly secrets, tokens, and basic flaws can leak online.</p>
+        </div>
+
+        <div className='why-existing-tools'>
+          <h3>Existing security tools weren't built for this new wave</h3>
+          <div className='tool-problems'>
+            <div className='problem-item'>
+              <div className='problem-icon'>
+                <X size={24} />
+              </div>
+              <div className='problem-text'>
+                <strong>Designed for big dev teams</strong>
+                <p>Filled with jargon and expensive for solo founders</p>
+              </div>
+            </div>
+            <div className='problem-item'>
+              <div className='problem-icon'>
+                <Clock size={24} />
+              </div>
+              <div className='problem-text'>
+                <strong>Too much time & money</strong>
+                <p>Require too much expertise to use effectively</p>
+              </div>
+            </div>
+            <div className='problem-item'>
+              <div className='problem-icon'>
+                <BookOpen size={24} />
+              </div>
+              <div className='problem-text'>
+                <strong>Technical docs, not solutions</strong>
+                <p>Non-tech builders get lost in complex documentation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className='why-raptor'>
+          <h3>Raptor is different</h3>
+          <div className='raptor-features'>
+            <div className='feature-item'>
+              <div className='feature-icon'>
+                <Zap size={28} />
+              </div>
+              <div className='feature-content'>
+                <h4>Instant scanning</h4>
+                <p>Scans your GitHub repo or app link with no setup, and no login required.</p>
+              </div>
+            </div>
+            <div className='feature-item'>
+              <div className='feature-icon'>
+                <Bot size={28} />
+              </div>
+              <div className='feature-content'>
+                <h4>AI-powered explanations</h4>
+                <p>Uses AI to turn security findings into plain-English explanations—like "forgetting to lock a door," not "CSP violation."</p>
+              </div>
+            </div>
+            <div className='feature-item'>
+              <div className='feature-icon'>
+                <Wrench size={28} />
+              </div>
+              <div className='feature-content'>
+                <h4>Copy-paste fixes</h4>
+                <p>Provides step-by-step recommendations and smart risk scoring with actionable solutions.</p>
+              </div>
+            </div>
+            <div className='feature-item'>
+              <div className='feature-icon'>
+                <Users size={28} />
+              </div>
+              <div className='feature-content'>
+                <h4>Built for creators</h4>
+                <p>Designed for solo hackers, no-coders, and anyone who wants safe apps without enterprise complexity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <footer className='footer'>
+      <div className='footer-content'>
+        <div className='footer-brand'>
+          <h3>Raptor</h3>
+          <p>Security for creators, learners, and builders at the speed and simplicity you deserve.</p>
+        </div>
+        
+        <div className='footer-links'>
+          <div className='footer-section'>
+            <h4>Product</h4>
+            <a href='#tools'>Security Scanner</a>
+            <a href='#why'>Why Raptor</a>
+            {/* <a href='#'>Pricing</a> */}
+          </div>
+          
+          <div className='footer-section'>
+            <h4>Contact</h4>
+            <a href='mailto:kartikey060105@gmail.com' target="_blank">Mail</a>
+            <a href='https://x.com/infin8erer' target="_blank">Twitter</a>
+            <a href='https://www.linkedin.com/in/kartikey10121' target="_blank">Linkedin</a>
+          </div>
+        </div>
+      </div>
+      
+      <div className='footer-bottom'>
+        <p>&copy; {new Date().getFullYear()} Raptor. All rights reserved.</p>
+      </div>
+    </footer>
 
     </>
 
