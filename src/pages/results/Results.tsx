@@ -6,7 +6,6 @@ import { Download, AlertTriangle, Shield, Info } from 'lucide-react';
 
 export default function Results() {
     const [data, setData] = useState<any>(null);
-    const [activeTab, setActiveTab] = useState<'vibe' | 'indepth'>('vibe');
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const location = useLocation()
@@ -303,10 +302,10 @@ export default function Results() {
                 }
                 else if (!githubUrl && webUrl) {
                     endpoint = `${BASE_URL}/quick/web`;
-                    body = {url: webUrl};
+                    body = {url: `https://${webUrl}`};
                 } else if (githubUrl && webUrl) {
                     endpoint = `${BASE_URL}/quick/full`;
-                    body = { githubUrl, webUrl};
+                    body = { githubUrl, webUrl: `https://${webUrl}`};
                 } else {
                     setError("No input provided. Please go back and enter a valid URL.");
                     return;
@@ -382,9 +381,9 @@ export default function Results() {
     };
 
     const exportResults = () => {
-        if (!data?.data?.report?.raw) return;
+        if (!data?.data?.raw) return;
         
-        const blob = new Blob([JSON.stringify(data.data.report.raw, null, 2)], {
+        const blob = new Blob([JSON.stringify(data.data.raw, null, 2)], {
             type: 'application/json'
         });
         const url = URL.createObjectURL(blob);
@@ -518,39 +517,20 @@ export default function Results() {
                         </div>
                     </div>
 
-                    {/* Skeleton AI Report */}
-                    <div className="ai-report-section">
+                    {/* Skeleton Summary Section */}
+                    <div className="summary-section">
                         <div className="section-header">
                             <div className="skeleton-text skeleton-section-title"></div>
-                            <div className="tab-buttons">
-                                <div className="skeleton-tab-btn"></div>
-                                <div className="skeleton-tab-btn"></div>
-                            </div>
                         </div>
-
-                        <div className="ai-content">
-                            <div className="vibe-summary skeleton">
-                                <div className="skeleton-text skeleton-subtitle"></div>
-                                <div className="skeleton-text skeleton-paragraph"></div>
+                        <div className="summary-content">
+                            <div className="summary-message skeleton">
                                 <div className="skeleton-text skeleton-paragraph"></div>
                             </div>
-                            
-                            <div className="step-by-step-fixes">
-                                <div className="skeleton-text skeleton-subtitle"></div>
-                                {[1, 2, 3].map((i) => (
-                                    <div key={i} className="fix-item skeleton">
-                                        <div className="fix-header">
-                                            <div className="skeleton-text skeleton-fix-title"></div>
-                                            <div className="skeleton-badge"></div>
-                                        </div>
-                                        <div className="fix-steps">
-                                            {[1, 2].map((step) => (
-                                                <div key={step} className="step-item">
-                                                    <div className="skeleton-step-number"></div>
-                                                    <div className="skeleton-text skeleton-step-text"></div>
-                                                </div>
-                                            ))}
-                                        </div>
+                            <div className="summary-stats">
+                                {[1, 2, 3, 4].map((i) => (
+                                    <div key={i} className="stat-item skeleton">
+                                        <div className="skeleton-stat-number"></div>
+                                        <div className="skeleton-stat-label"></div>
                                     </div>
                                 ))}
                             </div>
@@ -561,8 +541,7 @@ export default function Results() {
         );
     }
 
-    const report = data.data.report;
-    const aiReport = data.data.aiReport;
+    const report = data.data;
 
     return (
         <>
@@ -713,74 +692,33 @@ export default function Results() {
                     </div>
                 </div>
 
-                {/* AI Report Section */}
-                <div className="ai-report-section">
+                {/* Summary Section */}
+                <div className="summary-section">
                     <div className="section-header">
-                        <h2>AI Analysis & Recommendations</h2>
-                        <div className="tab-buttons">
-                            <button 
-                                className={`tab-btn ${activeTab === 'vibe' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('vibe')}
-                            >
-                                Friendly Summary
-                            </button>
-                            <button 
-                                className={`tab-btn ${activeTab === 'indepth' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('indepth')}
-                            >
-                                Technical Details
-                            </button>
-                        </div>
+                        <h2>Security Summary</h2>
                     </div>
-
-                    <div className="ai-content">
-                        {activeTab === 'vibe' ? (
-                            <div className="vibe-content">
-                                <div className="vibe-summary">
-                                    <h3>What This Means</h3>
-                                    <p>{aiReport.vibe.summary}</p>
-                                </div>
-                                
-                                <div className="step-by-step-fixes">
-                                    <h3>Step-by-Step Fixes</h3>
-                                    {aiReport.vibe.fixes.map((fix: any, index: number) => (
-                                        <div key={index} className="fix-item">
-                                            <div className="fix-header">
-                                                <h4>{fix.issue}</h4>
-                                                <span className={`necessity-badge ${fix.necessary.toLowerCase().includes('yes') ? 'critical' : fix.necessary.toLowerCase().includes('good') ? 'important' : 'optional'}`}>
-                                                    {fix.necessary}
-                                                </span>
-                                            </div>
-                                            <div className="fix-steps">
-                                                {fix.stepByStep.map((step: string, stepIndex: number) => (
-                                                    <div key={stepIndex} className="step-item">
-                                                        <span className="step-number">{stepIndex + 1}</span>
-                                                        <p>{step}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                    <div className="summary-content">
+                        <div className="summary-message">
+                            <p>{report.message}</p>
+                        </div>
+                        <div className="summary-stats">
+                            <div className="stat-item">
+                                <span className="stat-number">{report.summary.critical}</span>
+                                <span className="stat-label">Critical Issues</span>
                             </div>
-                        ) : (
-                            <div className="indepth-content">
-                                <div className="indepth-summary">
-                                    <h3>Technical Analysis</h3>
-                                    <p>{aiReport.inDepth.summary}</p>
-                                </div>
-                                
-                                <div className="technical-fixes">
-                                    <h3>Technical Recommendations</h3>
-                                    {aiReport.inDepth.fixes.map((fix: any, index: number) => (
-                                        <div key={index} className="technical-fix-item">
-                                            <h4>{fix.issue}</h4>
-                                            <p>{fix.recommendation}</p>
-                                        </div>
-                                    ))}
-                                </div>
+                            <div className="stat-item">
+                                <span className="stat-number">{report.summary.high}</span>
+                                <span className="stat-label">High Priority</span>
                             </div>
-                        )}
+                            <div className="stat-item">
+                                <span className="stat-number">{report.summary.medium}</span>
+                                <span className="stat-label">Medium Priority</span>
+                            </div>
+                            <div className="stat-item">
+                                <span className="stat-number">{report.summary.low}</span>
+                                <span className="stat-label">Low Priority</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

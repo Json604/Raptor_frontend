@@ -1155,3 +1155,131 @@
         font-size: 0.9rem;
     }
 }
+
+/* Summary Section Styles */
+.summary-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-content {
+    margin-top: 1.5rem;
+}
+
+.summary-message {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.summary-message p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00d4ff;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Skeleton styles for summary section */
+.summary-message.skeleton .skeleton-paragraph {
+    height: 1.5rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.stat-item.skeleton .skeleton-stat-number {
+    height: 2.5rem;
+    width: 60px;
+    margin: 0 auto 0.5rem;
+    border-radius: 4px;
+}
+
+.stat-item.skeleton .skeleton-stat-label {
+    height: 1rem;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* Mobile responsiveness for summary section */
+@media (max-width: 768px) {
+    .summary-section {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .summary-message p {
+        font-size: 1rem;
+    }
+    
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-item {
+        padding: 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
